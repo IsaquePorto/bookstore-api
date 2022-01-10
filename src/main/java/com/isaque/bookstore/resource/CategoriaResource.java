@@ -23,5 +23,3 @@ public class CategoriaResource {
 		return ResponseEntity.ok().body(obj);
 	}
 }
-
-//localhost:8080/categorias/1
