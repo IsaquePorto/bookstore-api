@@ -1,4 +1,4 @@
-package com.isaque.bookstore.resource.exceptions;
+package com.isaque.bookstore.controller.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

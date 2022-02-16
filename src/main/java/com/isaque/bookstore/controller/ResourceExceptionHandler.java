@@ -1,4 +1,4 @@
-package com.isaque.bookstore.resource;
+package com.isaque.bookstore.controller;
 
 import javax.servlet.ServletRequest;
 
@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.isaque.bookstore.resource.exceptions.StandardError;
+import com.isaque.bookstore.controller.exceptions.StandardError;
 import com.isaque.bookstore.service.exceptions.ObjectNotFoundException;
 
 @ControllerAdvice
