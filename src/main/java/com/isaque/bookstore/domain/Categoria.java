@@ -12,24 +12,26 @@ import javax.persistence.OneToMany;
 
 import lombok.Data;
 
-@Data @Entity
+@Data
+@Entity
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
 	private String descricao;
-	
+
 	@OneToMany(mappedBy = "categoria")
 	private List<Livro> livros = new ArrayList<Livro>();
-	
-	public Categoria () {
-		
+
+	public Categoria() {
+
 	}
-	
-	public Categoria (String nome, String descricao) {
+
+	public Categoria(String nome, String descricao) {
 		this.nome = nome;
 		this.descricao = descricao;
 	}
@@ -55,6 +57,5 @@ public class Categoria implements Serializable {
 		result = prime * result + id;
 		return result;
 	}
-	
-	
+
 }

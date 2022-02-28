@@ -19,13 +19,13 @@ public class Livro implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String titulo;
 	private String nomeAutor;
 	private String texto;
 	
 	@JsonIgnore
-	@ManyToOne @JoinColumn(name = "categoria_id")
+	@ManyToOne() @JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 	
 	public Livro () {
