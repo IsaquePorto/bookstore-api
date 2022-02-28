@@ -4,8 +4,11 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -22,6 +25,7 @@ import com.isaque.bookstore.domain.Livro;
 import com.isaque.bookstore.dtos.LivroDTO;
 import com.isaque.bookstore.service.LivroService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/livros")
 public class LivroController {
@@ -46,20 +50,20 @@ public class LivroController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Livro> updateLivro(@PathVariable Integer id, @RequestBody Livro livro) {
+	public ResponseEntity<Livro> updateLivro(@PathVariable Integer id, @Valid @RequestBody Livro livro) {
 		Livro newObj = service.updateLivro(id, livro);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PatchMapping("/{id}")
-	public ResponseEntity<Livro> updateLivroPatch(@PathVariable Integer id, @RequestBody Livro livro) {
+	public ResponseEntity<Livro> updateLivroPatch(@PathVariable Integer id, @Valid @RequestBody Livro livro) {
 		Livro newObj = service.updateLivro(id, livro);
 		return ResponseEntity.ok().body(newObj);
 	}
 
 	@PostMapping
 	public ResponseEntity<Livro> createLivro(@RequestParam(value = "categoria", defaultValue = "0") Integer idCat,
-			@RequestBody Livro livro) {
+			@Valid @RequestBody Livro livro) {
 
 		Livro novoLivro = service.create(idCat, livro);
 
