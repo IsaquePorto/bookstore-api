@@ -14,31 +14,71 @@ import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
-
-@Data @Entity 
+@Entity
 public class Livro implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@NotEmpty(message = "Campo TITULO é requerido.") 
-	@Length(min = 3, max = 50, message = "Campo TITULO deve ter entre 3 e 50 caracteres" )
+
+	@NotEmpty(message = "Campo TITULO é requerido.")
+	@Length(min = 3, max = 50, message = "Campo TITULO deve ter entre 3 e 50 caracteres")
 	private String titulo;
-	
-	@NotEmpty(message = "Campo NOMEAUTOR é requerido.") 
-	@Length(min = 3, max = 50, message = "Campo NOMEAUTOR deve ter entre 3 e 50 caracteres" )
+
+	@NotEmpty(message = "Campo NOMEAUTOR é requerido.")
+	@Length(min = 3, max = 50, message = "Campo NOMEAUTOR deve ter entre 3 e 50 caracteres")
 	private String nomeAutor;
 	private String texto;
-	
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getNomeAutor() {
+		return nomeAutor;
+	}
+
+	public void setNomeAutor(String nomeAutor) {
+		this.nomeAutor = nomeAutor;
+	}
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	@JsonIgnore
-	@ManyToOne() @JoinColumn(name = "categoria_id")
+	@ManyToOne()
+	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
-	
-	public Livro () {
-		
+
+	public Livro() {
+
 	}
 
 	public Livro(String titulo, String nomeAutor, String texto, Categoria categoria) {
@@ -69,6 +109,5 @@ public class Livro implements Serializable {
 		result = prime * result + id;
 		return result;
 	}
-	
-	
+
 }
